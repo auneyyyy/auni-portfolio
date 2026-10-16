@@ -1,0 +1,108 @@
+---
+import Icon from './Icon.astro';
+import { experience } from '../data/portfolio';
+---
+
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="container narrow">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><span class="num">04</span> Journey</span>
+      <h2 class="section-title" id="experience-title">
+        Experience &amp; <span class="mark">education</span>.
+      </h2>
+    </div>
+
+    <ol class="timeline">
+      {experience.map((e, i) => (
+        <li data-reveal style={`--delay: ${i * 100}ms`}>
+          <span class={`node ${e.type}`} aria-hidden="true">
+            <Icon name={e.type === 'work' ? 'briefcase' : 'cap'} size={20} />
+          </span>
+          <div class="entry">
+            <p class="dates">{e.dates}</p>
+            <h3>{e.role}</h3>
+            <p class="org">{e.org}</p>
+            <p class="summary">{e.summary}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .narrow {
+    max-width: 880px;
+  }
+  .timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 8px;
+    bottom: 8px;
+    border-left: 2px dashed var(--line);
+  }
+  .timeline li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+  }
+  .node {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: var(--border);
+    border-radius: 14px;
+    color: var(--on-accent);
+    background: var(--coral);
+    box-shadow: 3px 3px 0 var(--shadow-c);
+    transform: rotate(-6deg);
+  }
+  .node.education {
+    background: var(--mint);
+    transform: rotate(6deg);
+  }
+  .entry {
+    padding: 20px 22px;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s var(--ease);
+  }
+  .entry:hover {
+    transform: translateX(6px);
+  }
+  .dates {
+    display: inline-block;
+    margin: 0 0 8px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: var(--sun);
+    color: var(--on-accent);
+    border-radius: 999px;
+  }
+  h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+  .org {
+    margin: 4px 0 10px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .summary {
+    margin: 0;
+  }
+</style>

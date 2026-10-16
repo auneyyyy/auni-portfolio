@@ -1,0 +1,88 @@
+---
+import { skills } from '../data/portfolio';
+---
+
+<section class="section skills" id="skills" aria-labelledby="skills-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><span class="num">03</span> Toolkit</span>
+      <h2 class="section-title" id="skills-title">
+        Skills &amp; <span class="mark" style="--mark: var(--violet)">tools</span>.
+      </h2>
+    </div>
+
+    <div class="grid">
+      {skills.map((g, i) => (
+        <div class="panel" data-reveal style={`--delay: ${i * 100}ms; --accent: var(--${g.color})`}>
+          <h3>
+            <span class="count" aria-hidden="true">{String(g.items.length).padStart(2, '0')}</span>
+            {g.group}
+          </h3>
+          <ul>
+            {g.items.map((s) => <li class="chip">{s}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills {
+    background: var(--bg-alt);
+    border-block: var(--border);
+  }
+  .grid {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 860px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .panel {
+    padding: 26px;
+    background: var(--accent);
+    color: var(--on-accent);
+    border: var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s var(--ease);
+  }
+  .panel:nth-child(odd):hover { transform: rotate(-1.2deg) translateY(-4px); }
+  .panel:nth-child(even):hover { transform: rotate(1.2deg) translateY(-4px); }
+  h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .count {
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border: 2px solid var(--on-accent);
+    border-radius: 999px;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  .chip {
+    font-size: 0.95rem;
+    padding: 6px 14px;
+    background: #fffdf9;
+    color: var(--on-accent);
+    border-color: var(--on-accent);
+    transition: transform 0.2s var(--ease);
+  }
+  .chip:hover {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+</style>

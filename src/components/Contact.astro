@@ -1,0 +1,149 @@
+---
+import Icon from './Icon.astro';
+import { links } from '../data/portfolio';
+
+const socials = [
+  { href: links.linkedin, label: 'LinkedIn', icon: 'linkedin', cls: 'btn--violet' },
+  { href: links.github, label: 'GitHub', icon: 'github', cls: 'btn--mint' },
+] as const;
+---
+
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="box" data-reveal>
+      <span class="eyebrow"><span class="num">05</span> Contact</span>
+      <h2 class="section-title" id="contact-title">Let's build something together.</h2>
+      <p class="lead">
+        Have a role, project or just want to say hi? My inbox is always open. I'll get back to you as
+        soon as I can.
+      </p>
+
+      <div class="email-row">
+        <a class="btn btn--sun email" href={`mailto:${links.email}`}>
+          <Icon name="mail" />
+          {links.email}
+        </a>
+        <button class="btn btn--plain copy" type="button" data-copy={links.email}>
+          <span data-copy-icon><Icon name="copy" /></span>
+          <span data-copy-label>Copy email</span>
+        </button>
+        <span class="visually-hidden" role="status" data-copy-status></span>
+      </div>
+
+      <ul class="socials">
+        {socials.map((s) => (
+          <li>
+            <a class={`btn ${s.cls}`} href={s.href} target="_blank" rel="noopener me">
+              <Icon name={s.icon} /> {s.label}
+              <span class="visually-hidden">(opens in a new tab)</span>
+            </a>
+          </li>
+        ))}
+        {links.resume && (
+          <li>
+            <a class="btn btn--plain" href={links.resume} target="_blank" rel="noopener">
+              <Icon name="file" /> Resume
+            </a>
+          </li>
+        )}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .box {
+    position: relative;
+    padding: clamp(32px, 6vw, 72px);
+    background: var(--coral);
+    color: var(--on-accent);
+    border: var(--border);
+    border-radius: 32px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .box::after {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    right: -100px;
+    bottom: -140px;
+    border-radius: 50%;
+    border: 36px solid var(--sun);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .box > * {
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow {
+    background: #fffdf9;
+    color: var(--on-accent);
+    border-color: var(--on-accent);
+  }
+  .eyebrow .num {
+    color: #4d4566;
+  }
+  .section-title {
+    margin: 18px 0 16px;
+    max-width: 14ch;
+  }
+  .lead {
+    max-width: 46ch;
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    margin-bottom: 32px;
+  }
+  .email-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .box .btn {
+    border-color: var(--on-accent);
+    box-shadow: 4px 4px 0 var(--on-accent);
+  }
+  .box .btn:hover {
+    box-shadow: 6px 6px 0 var(--on-accent);
+  }
+  .box .btn--plain {
+    background: #fffdf9;
+    color: var(--on-accent);
+  }
+  .email {
+    font-size: clamp(0.95rem, 2.6vw, 1.15rem);
+    overflow-wrap: anywhere;
+  }
+  .copy > span {
+    display: inline-flex;
+  }
+  .socials {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const label = document.querySelector<HTMLElement>('[data-copy-label]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+  btn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+      if (label) label.textContent = 'Copied!';
+      if (status) status.textContent = 'Email address copied to clipboard';
+    } catch {
+      if (label) label.textContent = 'Press Ctrl+C';
+    }
+    setTimeout(() => {
+      if (label) label.textContent = 'Copy email';
+      if (status) status.textContent = '';
+    }, 2000);
+  });
+</script>

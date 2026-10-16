@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+  <!-- EXAMPLE MOCKUP — replace with a real screenshot -->
+  <rect width="1200" height="750" fill="#f7f5fb"/>
+  <!-- Sidebar -->
+  <rect width="230" height="750" fill="#1b1530"/>
+  <rect x="28" y="30" width="38" height="38" rx="10" fill="#ff6a5c"/>
+  <text x="80" y="56" fill="#fff" font-size="22" font-weight="800">StokSmart</text>
+  <rect x="20" y="112" width="190" height="44" rx="10" fill="#ffffff" fill-opacity=".12"/>
+  <circle cx="46" cy="134" r="8" fill="#ffc93c"/><text x="66" y="140" fill="#fff" font-size="16" font-weight="600">Dashboard</text>
+  <circle cx="46" cy="190" r="8" fill="#ffffff" fill-opacity=".35"/><text x="66" y="196" fill="#c9c2dc" font-size="16">Inventory</text>
+  <circle cx="46" cy="240" r="8" fill="#ffffff" fill-opacity=".35"/><text x="66" y="246" fill="#c9c2dc" font-size="16">Orders</text>
+  <circle cx="46" cy="290" r="8" fill="#ffffff" fill-opacity=".35"/><text x="66" y="296" fill="#c9c2dc" font-size="16">Suppliers</text>
+  <circle cx="46" cy="340" r="8" fill="#ffffff" fill-opacity=".35"/><text x="66" y="346" fill="#c9c2dc" font-size="16">Reports</text>
+  <!-- Top bar -->
+  <text x="270" y="68" fill="#1b1530" font-size="30" font-weight="800">Good morning, Auni 👋</text>
+  <text x="270" y="96" fill="#6b6385" font-size="16">Here's what's happening in your shop today.</text>
+  <rect x="890" y="40" width="200" height="44" rx="22" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+  <text x="912" y="68" fill="#9b94b0" font-size="15">Search items…</text>
+  <circle cx="1130" cy="62" r="22" fill="#a48bff"/>
+  <!-- Stat cards -->
+  <g>
+    <rect x="270" y="130" width="250" height="120" rx="16" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+    <text x="294" y="166" fill="#6b6385" font-size="15">Total items</text>
+    <text x="294" y="214" fill="#1b1530" font-size="38" font-weight="800">1,284</text>
+    <rect x="430" y="190" width="66" height="26" rx="13" fill="#4fe0a2"/><text x="444" y="208" fill="#1b1530" font-size="13" font-weight="700">+12%</text>
+  </g>
+  <g>
+    <rect x="540" y="130" width="250" height="120" rx="16" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+    <text x="564" y="166" fill="#6b6385" font-size="15">Low stock</text>
+    <text x="564" y="214" fill="#1b1530" font-size="38" font-weight="800">23</text>
+    <rect x="700" y="190" width="66" height="26" rx="13" fill="#ff6a5c"/><text x="716" y="208" fill="#1b1530" font-size="13" font-weight="700">Alert</text>
+  </g>
+  <g>
+    <rect x="810" y="130" width="350" height="120" rx="16" fill="#ffc93c"/>
+    <text x="834" y="166" fill="#1b1530" font-size="15" font-weight="600">Sales this week</text>
+    <text x="834" y="214" fill="#1b1530" font-size="38" font-weight="800">RM 8,920</text>
+  </g>
+  <!-- Chart -->
+  <rect x="270" y="274" width="560" height="440" rx="16" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+  <text x="294" y="314" fill="#1b1530" font-size="19" font-weight="700">Weekly sales</text>
+  <g fill="#a48bff">
+    <rect x="310" y="520" width="44" height="150" rx="8"/>
+    <rect x="382" y="460" width="44" height="210" rx="8"/>
+    <rect x="454" y="500" width="44" height="170" rx="8"/>
+    <rect x="526" y="400" width="44" height="270" rx="8" fill="#ff6a5c"/>
+    <rect x="598" y="470" width="44" height="200" rx="8"/>
+    <rect x="670" y="430" width="44" height="240" rx="8"/>
+    <rect x="742" y="540" width="44" height="130" rx="8"/>
+  </g>
+  <g fill="#9b94b0" font-size="13" text-anchor="middle">
+    <text x="332" y="694">Mon</text><text x="404" y="694">Tue</text><text x="476" y="694">Wed</text><text x="548" y="694">Thu</text><text x="620" y="694">Fri</text><text x="692" y="694">Sat</text><text x="764" y="694">Sun</text>
+  </g>
+  <!-- Low stock list -->
+  <rect x="850" y="274" width="310" height="440" rx="16" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+  <text x="874" y="314" fill="#1b1530" font-size="19" font-weight="700">Restock soon</text>
+  <g font-size="15">
+    <rect x="874" y="340" width="40" height="40" rx="10" fill="#ffe1dd"/><text x="928" y="358" fill="#1b1530" font-weight="600">Kopi Beans 1kg</text><text x="928" y="377" fill="#9b94b0" font-size="13">3 left</text>
+    <rect x="874" y="406" width="40" height="40" rx="10" fill="#efe9ff"/><text x="928" y="424" fill="#1b1530" font-weight="600">Paper Cups (M)</text><text x="928" y="443" fill="#9b94b0" font-size="13">8 left</text>
+    <rect x="874" y="472" width="40" height="40" rx="10" fill="#fff3d1"/><text x="928" y="490" fill="#1b1530" font-weight="600">Condensed Milk</text><text x="928" y="509" fill="#9b94b0" font-size="13">5 left</text>
+    <rect x="874" y="538" width="40" height="40" rx="10" fill="#dcf9ec"/><text x="928" y="556" fill="#1b1530" font-weight="600">Gula Melaka</text><text x="928" y="575" fill="#9b94b0" font-size="13">6 left</text>
+  </g>
+  <rect x="874" y="632" width="262" height="52" rx="26" fill="#1b1530"/>
+  <text x="1005" y="664" fill="#fff" font-size="16" font-weight="700" text-anchor="middle">Create purchase order</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+  <!-- EXAMPLE MOCKUP — replace with a real screenshot -->
+  <rect width="1200" height="750" fill="#efe9ff"/>
+  <circle cx="160" cy="620" r="180" fill="#a48bff" fill-opacity=".35"/>
+  <circle cx="1080" cy="120" r="140" fill="#ffc93c" fill-opacity=".5"/>
+
+  <!-- Phone 1: list -->
+  <g transform="translate(250 60)">
+    <rect width="330" height="680" rx="44" fill="#1b1530"/>
+    <rect x="12" y="12" width="306" height="656" rx="34" fill="#fffaf3"/>
+    <rect x="125" y="24" width="80" height="20" rx="10" fill="#1b1530"/>
+    <text x="32" y="98" fill="#6b6385" font-size="14">📍 George Town</text>
+    <text x="32" y="134" fill="#1b1530" font-size="28" font-weight="800">Makan mana?</text>
+    <rect x="32" y="152" width="266" height="42" rx="21" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+    <text x="52" y="179" fill="#9b94b0" font-size="14">Search char kuey teow…</text>
+    <g font-size="13" font-weight="700">
+      <rect x="32" y="208" width="66" height="30" rx="15" fill="#1b1530"/><text x="65" y="228" fill="#fff" text-anchor="middle">Halal</text>
+      <rect x="106" y="208" width="84" height="30" rx="15" fill="#fff" stroke="#1b1530" stroke-width="1.5"/><text x="148" y="228" fill="#1b1530" text-anchor="middle">Open now</text>
+      <rect x="198" y="208" width="70" height="30" rx="15" fill="#fff" stroke="#1b1530" stroke-width="1.5"/><text x="233" y="228" fill="#1b1530" text-anchor="middle">&lt; RM10</text>
+    </g>
+    <g>
+      <rect x="32" y="256" width="266" height="110" rx="18" fill="#ff6a5c"/>
+      <rect x="44" y="268" width="86" height="86" rx="12" fill="#ffc93c"/>
+      <text x="144" y="296" fill="#1b1530" font-size="17" font-weight="800">Nasi Kandar</text>
+      <text x="144" y="318" fill="#1b1530" font-size="13">Lebuh Chulia · 0.4km</text>
+      <text x="144" y="342" fill="#1b1530" font-size="13" font-weight="700">★ 4.8</text>
+    </g>
+    <g>
+      <rect x="32" y="380" width="266" height="110" rx="18" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+      <rect x="44" y="392" width="86" height="86" rx="12" fill="#4fe0a2"/>
+      <text x="144" y="420" fill="#1b1530" font-size="17" font-weight="800">Cendol Stall</text>
+      <text x="144" y="442" fill="#6b6385" font-size="13">Penang Road · 0.9km</text>
+      <text x="144" y="466" fill="#1b1530" font-size="13" font-weight="700">★ 4.6</text>
+    </g>
+    <g>
+      <rect x="32" y="504" width="266" height="110" rx="18" fill="#fff" stroke="#e3dfee" stroke-width="2"/>
+      <rect x="44" y="516" width="86" height="86" rx="12" fill="#a48bff"/>
+      <text x="144" y="544" fill="#1b1530" font-size="17" font-weight="800">Asam Laksa</text>
+      <text x="144" y="566" fill="#6b6385" font-size="13">Air Itam · 2.1km</text>
+      <text x="144" y="590" fill="#1b1530" font-size="13" font-weight="700">★ 4.9</text>
+    </g>
+  </g>
+
+  <!-- Phone 2: detail -->
+  <g transform="translate(640 110) rotate(4)">
+    <rect width="330" height="680" rx="44" fill="#1b1530"/>
+    <rect x="12" y="12" width="306" height="656" rx="34" fill="#fffaf3"/>
+    <rect x="12" y="12" width="306" height="260" rx="34" fill="#ffc93c"/>
+    <rect x="12" y="200" width="306" height="72" fill="#ffc93c"/>
+    <circle cx="165" cy="150" r="78" fill="#ff6a5c"/>
+    <circle cx="165" cy="150" r="48" fill="#fffaf3" fill-opacity=".6"/>
+    <rect x="125" y="24" width="80" height="20" rx="10" fill="#1b1530"/>
+    <text x="32" y="316" fill="#1b1530" font-size="26" font-weight="800">Nasi Kandar</text>
+    <text x="32" y="342" fill="#6b6385" font-size="14">Lebuh Chulia · Open until 2am</text>
+    <g font-size="13" font-weight="700">
+      <rect x="32" y="362" width="72" height="30" rx="15" fill="#4fe0a2"/><text x="68" y="382" fill="#1b1530" text-anchor="middle">Halal</text>
+      <rect x="112" y="362" width="64" height="30" rx="15" fill="#efe9ff"/><text x="144" y="382" fill="#1b1530" text-anchor="middle">RM 8</text>
+    </g>
+    <rect x="32" y="414" width="266" height="12" rx="6" fill="#e3dfee"/>
+    <rect x="32" y="436" width="220" height="12" rx="6" fill="#e3dfee"/>
+    <rect x="32" y="458" width="240" height="12" rx="6" fill="#e3dfee"/>
+    <rect x="32" y="500" width="266" height="96" rx="18" fill="#efe9ff"/>
+    <text x="52" y="538" fill="#1b1530" font-size="15" font-weight="700">“Kuah campur is a must!”</text>
+    <text x="52" y="564" fill="#6b6385" font-size="13">— Aina, 2 days ago</text>
+    <rect x="32" y="612" width="266" height="44" rx="22" fill="#1b1530"/>
+    <text x="165" y="640" fill="#fff" font-size="15" font-weight="700" text-anchor="middle">Get directions</text>
+  </g>
+</svg>

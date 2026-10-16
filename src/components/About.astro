@@ -1,0 +1,97 @@
+---
+import { profile } from '../data/portfolio';
+
+const factColors = ['var(--sun)', 'var(--mint)', 'var(--violet)'];
+---
+
+<section class="section about" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><span class="num">01</span> About me</span>
+      <h2 class="section-title" id="about-title">
+        Design brain, <span class="mark" style="--mark: var(--mint)">developer</span> hands.
+      </h2>
+    </div>
+
+    <div class="grid">
+      <div class="bio" data-reveal>
+        {profile.bio.map((p) => <p>{p}</p>)}
+      </div>
+
+      <ul class="facts">
+        {profile.facts.map((f, i) => (
+          <li data-reveal style={`--delay: ${i * 90}ms; --fact: ${factColors[i % factColors.length]}`}>
+            <span class="label">{f.label}</span>
+            <span class="value">{f.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--bg-alt);
+    border-block: var(--border);
+  }
+  .grid {
+    display: grid;
+    gap: 40px;
+  }
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: 1.6fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+  }
+  .bio {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+  }
+  .bio p:first-child::first-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 3.6em;
+    line-height: 0.8;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--coral);
+  }
+  .facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .facts li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: var(--border);
+    border-left: 12px solid var(--fact);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .facts li:hover {
+    transform: translate(-3px, -3px) rotate(-0.6deg);
+    box-shadow: var(--shadow-lg);
+  }
+  .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+</style>

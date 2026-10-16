@@ -1,0 +1,137 @@
+---
+import Icon from './Icon.astro';
+import { projects } from '../data/portfolio';
+---
+
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow"><span class="num">02</span> Selected work</span>
+      <h2 class="section-title" id="projects-title">
+        Things I've <span class="mark" style="--mark: var(--coral)">made</span>.
+      </h2>
+    </div>
+
+    <ul class="grid">
+      {projects.map((p, i) => (
+        <li data-reveal style={`--delay: ${i * 100}ms`}>
+          <article class="card" style={`--accent: var(--${p.accent})`}>
+            <div class="thumb">
+              <img src={p.image} alt={p.imageAlt} width="1200" height="750" loading="lazy" decoding="async" />
+            </div>
+            <div class="body">
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <ul class="tags" aria-label="Tech stack">
+                {p.tags.map((t) => <li class="chip">{t}</li>)}
+              </ul>
+              <div class="links">
+                {p.live && (
+                  <a class="btn btn--sun" href={p.live} target="_blank" rel="noopener">
+                    Live <Icon name="arrowUpRight" />
+                    <span class="visually-hidden">: {p.title} (opens in a new tab)</span>
+                  </a>
+                )}
+                {p.code && (
+                  <a class="btn btn--plain" href={p.code} target="_blank" rel="noopener">
+                    <Icon name="github" /> Code
+                    <span class="visually-hidden">: {p.title} (opens in a new tab)</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 680px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1040px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .grid > li {
+    display: flex;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0 var(--accent);
+  }
+  .thumb {
+    padding: 18px 18px 0;
+    background: var(--accent);
+    border-bottom: var(--border);
+    overflow: hidden;
+  }
+  .thumb img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+    border: var(--border);
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    transform: translateY(6px);
+    transition: transform 0.4s var(--ease);
+  }
+  .card:hover .thumb img {
+    transform: translateY(0) scale(1.02);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 22px 22px 24px;
+  }
+  h3 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .body > p {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  .tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 0;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+  }
+  .links .btn {
+    min-height: 44px;
+    padding: 8px 18px;
+    font-size: 0.95rem;
+  }
+</style>

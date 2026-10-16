@@ -1,0 +1,231 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/portfolio';
+
+const nav = [
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="site-header" data-header>
+  <div class="container bar">
+    <a href="#top" class="logo" aria-label={`${profile.shortName}, back to top`}>
+      <span class="logo-mark" aria-hidden="true">{profile.initials}</span>
+      <span class="logo-text">{profile.shortName}</span>
+    </a>
+
+    <nav aria-label="Main">
+      <ul class="nav-list" id="nav-list" data-nav>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="icon-sun"><Icon name="sun" /></span>
+        <span class="icon-moon"><Icon name="moon" /></span>
+      </button>
+      <button
+        class="icon-btn menu-btn"
+        type="button"
+        data-menu-toggle
+        aria-controls="nav-list"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <span class="icon-open"><Icon name="menu" /></span>
+        <span class="icon-close"><Icon name="close" /></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.25s ease, background-color 0.3s ease;
+  }
+  .site-header.is-scrolled {
+    border-bottom-color: var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 68px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+  }
+  .logo-mark {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: var(--border);
+    border-radius: 12px;
+    background: var(--coral);
+    color: var(--on-accent);
+    box-shadow: 3px 3px 0 var(--shadow-c);
+    transition: transform 0.3s var(--ease);
+  }
+  .logo:hover .logo-mark {
+    transform: rotate(-8deg);
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-list a {
+    display: block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-list a:hover {
+    border-color: var(--line);
+    background: var(--sun);
+    color: var(--on-accent);
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+  .icon-btn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.2s var(--ease), background-color 0.2s ease;
+  }
+  .icon-btn:hover {
+    transform: rotate(-6deg);
+    background: var(--sun);
+    color: var(--on-accent);
+  }
+  .icon-btn > span {
+    display: grid;
+  }
+
+  /* Theme icon: show the mode you will switch TO */
+  .icon-sun { display: none !important; }
+  :global(:root[data-theme='dark']) .icon-sun { display: grid !important; }
+  :global(:root[data-theme='dark']) .icon-moon { display: none !important; }
+
+  .menu-btn { display: none; }
+  .icon-close { display: none !important; }
+  .menu-btn[aria-expanded='true'] .icon-close { display: grid !important; }
+  .menu-btn[aria-expanded='true'] .icon-open { display: none !important; }
+
+  @media (max-width: 820px) {
+    .menu-btn { display: grid; }
+    .bar nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+    .nav-list {
+      position: absolute;
+      top: 2px;
+      left: 16px;
+      right: 16px;
+      flex-direction: column;
+      padding: 12px;
+      background: var(--surface);
+      border: var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s var(--ease), visibility 0.2s;
+    }
+    .nav-list.is-open {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+    }
+    .nav-list a {
+      padding: 12px 16px;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const header = document.querySelector<HTMLElement>('[data-header]')!;
+  const themeBtn = document.querySelector<HTMLButtonElement>('[data-theme-toggle]')!;
+  const menuBtn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
+  const navList = document.querySelector<HTMLElement>('[data-nav]')!;
+
+  // Theme toggle
+  const syncThemeLabel = () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    themeBtn.setAttribute('aria-label', `Switch to ${next} mode`);
+  };
+  syncThemeLabel();
+  themeBtn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+    syncThemeLabel();
+  });
+
+  // Border under header after scrolling
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu
+  const setMenu = (open: boolean) => {
+    navList.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+  navList.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      menuBtn.focus();
+    }
+  });
+</script>
